@@ -1,33 +1,27 @@
-# Project One Get-Item Pseudocode
-#
-# Graded checkpoint: Module Five Project One
-# Later use: get-item and inventory design for M7 Project Two
-#
-# Review the course-provided get-item flowchart before completing this file.
-# Write pseudocode, not Python code. Use clear indentation and course-appropriate
-# keywords such as INPUT, OUTPUT, IF, ELSE, SET, ADD, or similar terms.
-
 START get_item
+    # TODO 1: Identify the information the get-item process needs
+    SET current_room TO player's current location
+    SET room_item TO item located in current_room
+    SET player_inventory TO player's current collection list
 
-    # TODO 1: Identify the information the get-item process needs.
-    # Consider the current room, item in that room, and player's inventory.
+    # TODO 2: Prompt for and receive the player's get-item command
+    OUTPUT "Enter command (example: get [item]): "
+    INPUT player_command
 
-    # TODO 2: Prompt for and receive the player's get-item command.
+    # TODO 3 & 4: Validate if requested item is available and handle valid request
+    IF player_command CONTAINS room_item THEN
+        IF room_item IS NOT IN player_inventory THEN
+            ADD room_item TO player_inventory
+            OUTPUT "You picked up the " + room_item + "!"
+        ELSE
+            OUTPUT "You already have this item in your inventory."
+        ENDIF
+    
+    # TODO 5: Handle invalid item request
+    ELSE
+        OUTPUT "That item is not in this room!"
+    ENDIF
 
-    # TODO 3: Validate whether the requested item is available in the current
-    # room. Show the decision clearly.
-
-    # TODO 4: Describe what happens when the item request is valid.
-    # Include the inventory update and player output.
-
-    # TODO 5: Describe what happens when the item request is invalid.
-    # Include the output the player should receive.
-
-    # TODO 6: Show how the process returns to or continues the larger gameplay
-    # loop after the command is handled.
-
+    # TODO 6: Return to or continue the larger gameplay loop
+    RETURN to main game loop
 END get_item
-
-
-# References
-

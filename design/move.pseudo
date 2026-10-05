@@ -1,25 +1,28 @@
-# Project One Move-Between-Rooms Pseudocode
-#
-# Graded checkpoint: Module Five Project One
-# Later use: conceptual support for M6; movement design for M7
-#
-# Review the course-provided movement flowchart before completing this file.
-# Write pseudocode, not Python code. Use clear indentation and course-appropriate
-# keywords such as INPUT, OUTPUT, IF, ELSE, WHILE, SET, or similar terms.
+# Project One Move Pseudocode
 
-# TODO 1: Identify the information the movement process needs.
-# Consider the player's current room and movement command.
+START move_player
 
-# TODO 2: Prompt for and receive the player's movement command.
+    # TODO 1: Identify the information the movement process needs.
+    SET current_room TO player's current location
+    SET valid_directions TO list of connected rooms (North, South, East, West)
 
-# TODO 3: Validate whether the requested movement is possible from the
-# current room. Show the decision clearly.
+    # TODO 2: Prompt for and receive the player's movement command.
+    OUTPUT "Enter direction (north, south, east, west): "
+    INPUT player_direction
 
-# TODO 4: Describe what happens when the movement command is valid.
-# Include the room update and player output.
+    # TODO 3: Validate whether the requested direction is available.
+    IF player_direction IS IN valid_directions THEN
+        
+        # TODO 4: Describe what happens when the direction is valid.
+        SET current_room TO connected_room in player_direction
+        OUTPUT "You walk to the " + current_room + "."
 
-# TODO 5: Describe what happens when the movement command is invalid.
-# Include the output the player should receive.
+    # TODO 5: Describe what happens when the direction is invalid.
+    ELSE
+        OUTPUT "You can't go that way! Choose a valid direction."
+    ENDIF
 
-# TODO 6: Show how movement fits into repeated gameplay.
-# The final game continues accepting commands until a required ending occurs.
+    # TODO 6: Show how the process returns to the larger gameplay loop.
+    RETURN to main game loop
+
+END move_player
